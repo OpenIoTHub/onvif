@@ -18,7 +18,8 @@ apps:
   onvif:
     command: onvif
     extensions:
-      - kde-neon
+      # - kde-neon
+      - gnome
     plugs:
       - kde-frameworks-5-plug
       - opengl
