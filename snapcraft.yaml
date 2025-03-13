@@ -1,0 +1,24 @@
+name: onvif
+version: 4.2.0
+summary: Cross-Platform Benchmark
+description: |
+  onvif tools
+confinement: strict
+base: core24
+
+parts:
+  onvif:
+    plugin: dump
+    source: ./
+
+apps:
+  onvif:
+    command: onvif
+    extensions:
+      - kde-neon
+    plugs:
+      - kde-frameworks-5-plug
+      - opengl
+      - network
+      - network-bind
+      - pulseaudio
