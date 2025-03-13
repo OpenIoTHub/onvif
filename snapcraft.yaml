@@ -4,13 +4,12 @@ summary: onvif viewer
 description: |
   onvif tools
 confinement: strict
-base: core22
+base: core18
 
 parts:
   onvif:
     plugin: dump
     source: ./
-    after: [desktop-qt5]
     stage-packages:
       - ffmpeg
       - x264
@@ -21,6 +20,33 @@ parts:
       - libqt5xml5
       - qtbase5-dev
       - libqt5opengl5
+    after:
+      - desktop-qt5
+      - ffmpeg
+  ffmpeg:
+    plugin: autotools
+    source: https://git.ffmpeg.org/ffmpeg.git
+    source-branch: master
+    configflags:
+      - --prefix=/usr
+      - --enable-pic
+      - --enable-shared
+      - --disable-static
+      - --disable-all
+      - --enable-avcodec
+      - --enable-decoder=h264
+      - --enable-decoder=hevc
+      - --enable-hwaccel=h264_vaapi
+      - --enable-hwaccel=hevc_vaapi
+      - --enable-hwaccel=h264_vdpau
+      - --enable-hwaccel=hevc_vdpau
+
+  desktop-qt5:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-branch: stable
+    source-subdir: qt
+    plugin: make
+
 
 apps:
   onvif:
@@ -34,3 +60,4 @@ apps:
       - network-bind
       - desktop
       - desktop-legacy
+      - x11
