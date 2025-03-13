@@ -36,6 +36,7 @@ parts:
       - libqt5xml5
       - qtbase5-dev
       - libqt5opengl5
+      - libpulse-dev
     after:
       - desktop-qt5
 
