@@ -22,8 +22,8 @@ parts:
       - libqt5opengl5
     after:
       - desktop-qt5
-      - ffmpeg
-  ffmpeg:
+      - ffmpeg-app
+  ffmpeg-app:
     plugin: autotools
     source: https://git.ffmpeg.org/ffmpeg.git
     source-branch: master
