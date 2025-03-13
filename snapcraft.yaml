@@ -1,6 +1,6 @@
 name: onvif
 version: 4.2.0
-summary: Cross-Platform Benchmark
+summary: onvif viewer
 description: |
   onvif tools
 confinement: strict
@@ -10,7 +10,10 @@ parts:
   onvif:
     plugin: dump
     source: ./
-
+    stage-packages:
+      - ffmpeg
+      - x264
+      - x265
 apps:
   onvif:
     command: onvif
