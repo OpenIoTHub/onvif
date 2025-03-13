@@ -26,6 +26,11 @@ parts:
   onvif:
     plugin: dump
     source: ./
+    build-packages:
+      - libpulse-dev
+      - libx264-dev
+      - libx264-dev
+      - libffmpegthumbnailer-dev
     stage-packages:
       - ffmpeg
       - x264
@@ -39,6 +44,7 @@ parts:
       - libpulse-dev
       - libpulse0
       - libpulse-mainloop-glib0
+      - libffmpegthumbnailer4v5
     after:
       - desktop-qt5
 
