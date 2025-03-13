@@ -18,7 +18,6 @@ parts:
       - libqt5multimedia5-plugins
       - libqt5gui5
       - libqt5xml5
-      - qt5-default 
       - qtbase5-dev
       - libqt5opengl5
 
