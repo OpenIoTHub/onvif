@@ -17,10 +17,6 @@ parts:
       - libqt5multimedia5
       - libqt5multimedia5-plugins
       - libqt5gui5
-      - libgdk-pixbuf2.0-0
-      - libqt5svg5
-      - appmenu-qt5
-      - fcitx-frontend-qt5
 
 apps:
   onvif:
