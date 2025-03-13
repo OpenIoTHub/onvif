@@ -10,6 +10,7 @@ parts:
   onvif:
     plugin: dump
     source: ./
+    after: [desktop-qt5]
     stage-packages:
       - ffmpeg
       - x264
@@ -23,17 +24,13 @@ parts:
 
 apps:
   onvif:
-    command: onvif
+    command: desktop-launch $SNAP/usr/bin/onvif
     extensions:
       # - kde-neon
       - gnome
     plugs:
-      - kde-frameworks-5-plug
       - opengl
       - network
       - network-bind
-      - pulseaudio
-      - x11
-      - display-control
-      - mir
-      - wayland
+      - desktop
+      - desktop-legacy
