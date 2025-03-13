@@ -18,6 +18,8 @@ parts:
       - libqt5multimedia5-plugins
       - libqt5gui5
       - libqt5xml5
+      - qtbase5-dev
+      - libqt5opengl5
 
 apps:
   onvif:
