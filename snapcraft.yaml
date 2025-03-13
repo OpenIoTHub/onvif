@@ -51,9 +51,9 @@ parts:
 apps:
   onvif:
     command: desktop-launch $SNAP/usr/bin/onvif
-    extensions:
-      # - kde-neon
-      - gnome
+    # extensions:
+    #   # - kde-neon
+    #   - gnome
     plugs:
       - opengl
       - network
