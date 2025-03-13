@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  project-id: codes.merritt.FeelingFinder
+
+jobs:
+  linux:
+    name: Linux
+    runs-on: ubuntu-22.04
+    env:
+      SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install snapcraft
+        run: |
+          sudo snap install snapcraft --classic
+      - run: hash -r
+      - name: Setup LXD
+        uses: canonical/setup-lxd@v0.1.1
+        with:
+          channel: latest/stable
+      - name: run snapcraft
+        run: |
+          snapcraft --use-lxd
+      - run: ls -a
+      - uses: actions/upload-artifact@v4
+        with:
+          name: onvif_1.0.0_amd64.snap
+          path: ./onvif_1.0.0_amd64.snap
