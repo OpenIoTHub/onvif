@@ -26,3 +26,5 @@ apps:
       - network-bind
       - pulseaudio
       - x11
+      - display-control
+      - mir
