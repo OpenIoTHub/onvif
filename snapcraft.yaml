@@ -4,7 +4,7 @@ summary: onvif viewer
 description: |
   onvif tools
 confinement: strict
-base: core24
+base: core22
 
 parts:
   onvif:
