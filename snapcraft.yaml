@@ -7,22 +7,29 @@ grade: stable
 confinement: strict
 base: core22
 
-# plugs:
-#     desktop:
-#         mount-host-font-cache: false
-#     icon-themes:
-#         interface: content
-#         target: $SNAP/data-dir/icons
-#         default-provider: gtk-common-themes
-#     sound-themes:
-#         interface: content
-#         target: $SNAP/data-dir/sounds
-#         default-provider: gtk-common-themes
-#     kf5-5-113-qt-5-15-11-core22:
-#         content: kf5-5-113-qt-5-15-11-core22-all
-#         interface: content
-#         default-provider: kf5-5-113-qt-5-15-11-core22
-#         target: $SNAP/kf5
+plugs:
+    desktop:
+        mount-host-font-cache: false
+    icon-themes:
+        interface: content
+        target: $SNAP/data-dir/icons
+        default-provider: gtk-common-themes
+    sound-themes:
+        interface: content
+        target: $SNAP/data-dir/sounds
+        default-provider: gtk-common-themes
+    kf5-5-113-qt-5-15-11-core22:
+        content: kf5-5-113-qt-5-15-11-core22-all
+        interface: content
+        default-provider: kf5-5-113-qt-5-15-11-core22
+        target: $SNAP/kf5
+
+hooks:
+  configure:
+    plugs:
+    - desktop
+    command-chain:
+    - snap/command-chain/hooks-configure-desktop
 
 layout:
   /usr/share/X11:
@@ -31,6 +38,10 @@ layout:
 apps:
   onvif:
     command: onvif
+    command-chain:
+      - snap/command-chain/desktop-launch
+    environment:
+      SNAP_DESKTOP_RUNTIME: $SNAP/kf5
     extensions:
       - kde-neon
     plugs:
@@ -65,3 +76,10 @@ parts:
       - libpulse0
       - libpulse-mainloop-glib0
       - libffmpegthumbnailer4v5
+    kde-neon/sdk:
+      source: /snap/snapcraft/current/share/snapcraft/extensions/desktop/kde-neon
+      plugin: make
+      make-parameters:
+      - PLATFORM_PLUG=kf5-5-113-qt-5-15-11-core22
+      build-snaps:
+      - kf5-5-113-qt-5-15-11-core22-sdk
