@@ -76,10 +76,10 @@ parts:
       - libpulse0
       - libpulse-mainloop-glib0
       - libffmpegthumbnailer4v5
-    kde-neon/sdk:
-      source: /snap/snapcraft/current/share/snapcraft/extensions/desktop/kde-neon
-      plugin: make
-      make-parameters:
-      - PLATFORM_PLUG=kf5-5-113-qt-5-15-11-core22
-      build-snaps:
-      - kf5-5-113-qt-5-15-11-core22-sdk
+  kde-neon/sdk:
+    source: /snap/snapcraft/current/share/snapcraft/extensions/desktop/kde-neon
+    plugin: make
+    make-parameters:
+    - PLATFORM_PLUG=kf5-5-113-qt-5-15-11-core22
+    build-snaps:
+    - kf5-5-113-qt-5-15-11-core22-sdk
